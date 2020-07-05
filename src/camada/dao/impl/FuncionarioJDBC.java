@@ -52,17 +52,9 @@ public class FuncionarioJDBC implements FuncionarioDao{
 			rs = st.executeQuery();
 			
 			if ( rs.next() ) {
-				Departamento dep = new Departamento();
-				dep.setId(rs.getInt("Departmentid"));
-				dep.setName(rs.getString("DepName"));
+				Departamento dep = instantiateDepartamento(rs);
 				
-				Funcionario obj = new Funcionario();
-				obj.setId(rs.getInt("Id"));
-				obj.setName(rs.getString("Name"));
-				obj.setEmail(rs.getString("Email"));
-				obj.setBaseSalary(rs.getDouble("BaseSalary"));
-				obj.setBirthDate(rs.getDate("BirthDate"));
-				obj.setDepartamento(dep);
+				Funcionario obj =instantiateFuncionario(rs, dep);
 				return obj;
 				
 			}
@@ -75,6 +67,24 @@ public class FuncionarioJDBC implements FuncionarioDao{
 			DB.closeStatement(st);
 			DB.closeResultSet(rs);
 		}
+	}
+
+	private Funcionario instantiateFuncionario(ResultSet rs, Departamento dep) throws SQLException {
+		 	Funcionario obj = new Funcionario();
+			obj.setId(rs.getInt("Id"));
+			obj.setName(rs.getString("Name"));
+			obj.setEmail(rs.getString("Email"));
+			obj.setBaseSalary(rs.getDouble("BaseSalary"));
+			obj.setBirthDate(rs.getDate("BirthDate"));
+			obj.setDepartamento(dep);
+			return obj;
+	}
+
+	private Departamento instantiateDepartamento(ResultSet rs) throws SQLException {
+		Departamento dep = new Departamento();
+		dep.setId(rs.getInt("Departmentid"));
+		dep.setName(rs.getString("DepName"));
+		return dep;
 	}
 
 	@Override

@@ -15,8 +15,8 @@ public class Program {
 
 		FuncionarioDao func = DaoFactory.createFuncionarioDao();
 		
+		System.out.println("=== Teste 01: Funcionarios findById ====");
 		Funcionario seller = func.findById(3);
-		
 		System.out.println(seller);
 	}
 
