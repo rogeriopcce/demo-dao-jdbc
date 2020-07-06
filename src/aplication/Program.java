@@ -1,6 +1,8 @@
 package aplication;
 
+import java.util.Date;
 import java.util.List;
+
 import camada.dao.DaoFactory;
 import camada.dao.FuncionarioDao;
 import camada.model.Departamento;
@@ -30,7 +32,12 @@ public class Program {
 		lista = func.findAll();
 		for (Funcionario obj : lista ) {
 			System.out.println(obj);
-		}		
+		}
+		
+		System.out.println("\n=== Teste 04: Funcionarios insert ====");
+
+		Funcionario newSeller = new Funcionario(null, "Greg", "greg@gmail.com", new Date(), 4000.00, dep);
+		func.insert(newSeller);
 	}
 
 }
