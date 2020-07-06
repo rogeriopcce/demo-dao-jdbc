@@ -18,12 +18,19 @@ public class Program {
 		Funcionario seller = func.findById(3);
 		System.out.println(seller);
 		
-		System.out.println("\n === Teste 02: Funcionarios findByDepartamento ====");
+		System.out.println("\n=== Teste 02: Funcionarios findByDepartamento ====");
 		Departamento dep = new Departamento(2, null);
 		List<Funcionario> lista = func.findbyDepartamento(dep);
 		for (Funcionario obj : lista ) {
 			System.out.println(obj);
 		}
+
+		System.out.println("\n=== Teste 03: Funcionarios findAll ====");
+
+		lista = func.findAll();
+		for (Funcionario obj : lista ) {
+			System.out.println(obj);
+		}		
 	}
 
 }
