@@ -35,9 +35,13 @@ public class Program {
 		}
 		
 		System.out.println("\n=== Teste 04: Funcionarios insert ====");
-
 		Funcionario newSeller = new Funcionario(null, "Greg", "greg@gmail.com", new Date(), 4000.00, dep);
 		func.insert(newSeller);
+		
+		System.out.println("\n=== Teste 05: Funcionarios Update ====");
+		seller = func.findById(1);
+		seller.setName("Martha Weine");
+		func.update(seller);
 	}
 
 }
