@@ -2,6 +2,7 @@ package aplication;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 import camada.dao.DaoFactory;
 import camada.dao.FuncionarioDao;
@@ -13,6 +14,8 @@ import camada.model.Funcionario;
 public class Program {
 
 	public static void main(String[] args){
+		
+		Scanner sc = new Scanner(System.in);
 
 		FuncionarioDao func = DaoFactory.createFuncionarioDao();
 		
@@ -42,6 +45,14 @@ public class Program {
 		seller = func.findById(1);
 		seller.setName("Martha Weine");
 		func.update(seller);
+		
+		System.out.println("\n=== Teste 06: Funcionarios Delete ====");
+		System.out.println("Digite um código para excluir: ");
+		int newId = sc.nextInt();
+		func.deleteById(newId);
+		System.out.println("Exclusão com sucesso!!!");
+		sc.close();
+		
 	}
 
 }
